@@ -16,11 +16,9 @@ const drawerItems = document.querySelectorAll('.todo__drawer-item')
 const taskList = document.querySelector('.task-list')
 const resolvedTasksList = document.querySelector('.resolved__tasks-list')
 const subTitle = document.querySelector('.header__subtitle')
-
 const menuBtn = document.querySelector('.todo__drawer-menu-btn')
 
 let currentTab = 'workTime' //Изначальная вкладка на странице
-
 
 // Вкладки
 const data = {
@@ -127,24 +125,15 @@ function doneTask(target) {
     const doneTask = tasks[indexTaskToDone]
     currentTabData['doneTasks'].push(doneTask) //Добавили задачу в список выполненных
 
-    task.remove() //Удаляем готовую задачу из списка всех задач
-
-    renderReadyTask(doneTask);
     currentTabData['tasks'] = tasks.filter(el => el.id !== doneTask.id)
-
 
     setDataToLocalstorage(data);
 
-    //Перекидываем задачу из текущего списка в Выполненные
-    // let promise = new Promise(function(resolve, rejecct) {
-    //     resolve(setTimeout(() => resolvedTasksList.insertAdjacentHTML('beforeend', taskComponent), 1000));
+    //Пауза для отображения выполненной задачи в "перечеркнутом виде"
+    setTimeout(() => task.remove(), 1000)
+    setTimeout(() => renderReadyTask(doneTask), 1000)
 
-    //     rejecct(new Error("Some Error!"));
-    //     setTimeout(() => task.remove(), 1000)
-    // })
-    // promise()
 }
-
 
 // Удаление задачи
 function deleteTask(target, typeTasks) {
@@ -186,9 +175,6 @@ function createTask() {
         return alert('Вы не написали название задачи')
     }
 
-    // const id = Math.random().toString()
-    // const date = moment().format('DD.MM.YYYY')
-
     const taskElement = {
         id: Math.random().toString(36),
         text: taskText,
@@ -216,11 +202,11 @@ doneBtn.forEach(element => {
 })
 
 crossErrBtn.forEach(element => {
-    element.addEventListener('click', deleteTask)
+    element.addEventListener('click', deleteTask) //Нажатие на кнопку Удаление задачи
 })
 
 starImportantBtn.forEach(element => {
-    element.addEventListener('click', makeImportantTask)
+    element.addEventListener('click', makeImportantTask)  // Нажатие на кнопку "Звёздочка"
 })
 
 //Кнопка очистки всего списка задач
@@ -264,7 +250,6 @@ function renderSubTitle(type) { //Отображение заголовка те
     subTitle.insertAdjacentHTML('beforeend', title)
 }
 
-
 // Функция по отображению выполненных задач на странице
 function renderReadyTask(element) {
     const taskComponent = /*html*/`
@@ -298,6 +283,7 @@ drawerItems.forEach(item => {
     })
 })
 
+// Нажатие на кнопку "Меню"
 menuBtn.addEventListener('click', () => {
     document.querySelector('.todo__drawer').classList.toggle('active')
 })
