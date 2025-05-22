@@ -72,7 +72,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-.todo {
+.side-menu {
   background: #faf9f8;
   max-width: 1512px;
   min-width: 600px;
@@ -80,7 +80,7 @@ h1 {
   display: flex;
 }
 
-.todo__drawer {
+.side-menu__list {
   background: #fff;
   width: 347px;
   padding: 42px 0;
@@ -101,8 +101,8 @@ h1 {
  }
 }
 
-.todo__drawer-item,
-.todo__drawer-add-catagory {
+.side-menu__list-item,
+.side-menu__list-add-catagory {
   display: flex;
   align-items: center;
   height: 54px;
@@ -111,12 +111,12 @@ h1 {
   position: relative;
 }
 
-.todo__drawer-item > img {
+.side-menu__list-item > img {
   height: 25px;
   width: 25px;
 }
 
-.todo__drawer-item::before {
+.side-menu__list-item::before {
   content: '';
   width: 0%;
   height: 100%;
@@ -125,7 +125,7 @@ h1 {
   transition: all 0.3s ease-out;
 }
 
-.todo__drawer-item::after {
+.side-menu__list-item::after {
   content: '';
   position: absolute;
   width: 3px;
@@ -134,34 +134,34 @@ h1 {
   transition: all 0.3s ease-out;
 }
 
-.todo__drawer-item:hover::after {
+.side-menu__list-item:hover::after {
   height: 100%;
 }
 
-.todo__drawer-item:hover::before {
+.side-menu__list-item:hover::before {
   width: 100%;
 }
 
-.todo__drawer-item p {
+.side-menu__list-item p {
   color: var(--text-color);
 }
 
-.todo__drawer-item img {
+.side-menu__list-item img {
   margin-right: 28px;
   margin-left: 44px;
 }
 
-.todo__drawer-add-catagory {
+.side-menu__list-add-catagory {
   margin-left: 50px;
   color: var(--text-blue-color);
 }
 
-.todo__drawer-add-catagory span {
+.side-menu__list-add-catagory span {
   margin-right: 33px;
   font-size: 24px;
 }
 
-.todo__drawer-add-catagory p:hover {
+.side-menu__list-add-catagory p:hover {
   border-bottom: 1px solid var(--text-blue-color);
 }
 
@@ -170,7 +170,7 @@ h1 {
   margin-left: 47px;
 }
 
-.todo__tasks {
+.side-menu__tasks {
   padding: 35px 55px;
   display: flex;
   flex-flow: column;
@@ -185,9 +185,7 @@ h1 {
   position: relative;
 }
 
-.todo__drawer-menu-btn {
-  /* margin-left: 34px; */
-  /* margin-bottom: 35px; */
+.side-menu__list-menu-btn {
   position: absolute;
   top: 0;
   left: -50px;
@@ -300,7 +298,7 @@ h1 {
   flex: 1 0 0;
 }
 
-.cross-err-btn {
+.cross-arr-btn {
   width: 27px;
   height: 27px;
   fill: #ff4c4c;

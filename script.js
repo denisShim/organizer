@@ -4,19 +4,19 @@ const createTaskBtn = document.querySelector('.create-task-btn')
 const createTaskInput = document.querySelector('.create-task-input')
 
 // Кнопки для взаимодействия с задачей
-const crossErrBtn = document.querySelectorAll('.cross-err-btn')
+const crossArrBtn = document.querySelectorAll('.cross-arr-btn')
 const starImportantBtn = document.querySelectorAll('.star-important')
 const doneBtn = document.querySelectorAll('.done-btn')
 
 const clearBtn = document.querySelector('.header__clear-btn')
 const sortBtn = document.querySelector('.header__sort-btn')
-const drawerItems = document.querySelectorAll('.todo__drawer-item')
+const listItems = document.querySelectorAll('.side-menu__list-item')
 
 // Рабочее пространство
 const taskList = document.querySelector('.task-list')
 const resolvedTasksList = document.querySelector('.resolved__tasks-list')
 const subTitle = document.querySelector('.header__subtitle')
-const menuBtn = document.querySelector('.todo__drawer-menu-btn')
+const menuBtn = document.querySelector('.side-menu__list-menu-btn')
 
 let currentTab = 'workTime' //Изначальная вкладка на странице
 
@@ -90,7 +90,7 @@ function renderSimpleTask(position, element) {
           d="M7.56642 3.90378C8.3858 1.86108 8.79549 0.839722 9.5 0.839722C10.2045 0.839722 10.6142 1.86108 11.4336 3.90378L11.4717 3.9989C11.9346 5.15293 12.1661 5.72995 12.6378 6.08066C13.1095 6.43138 13.7288 6.48684 14.9672 6.59775L15.1911 6.6178C17.218 6.79933 18.2314 6.89009 18.4483 7.53486C18.6651 8.17964 17.9125 8.86437 16.4073 10.2338L15.9049 10.6909C15.1429 11.3841 14.7619 11.7308 14.5843 12.1851C14.5512 12.2698 14.5237 12.3566 14.5019 12.445C14.3852 12.9186 14.4967 13.4214 14.7199 14.4271L14.7893 14.7402C15.1994 16.5884 15.4044 17.5126 15.0464 17.9112C14.9127 18.0601 14.7388 18.1674 14.5457 18.2201C14.0288 18.3611 13.295 17.7631 11.8273 16.5672C10.8636 15.7819 10.3817 15.3893 9.82848 15.3009C9.61087 15.2662 9.38912 15.2662 9.17151 15.3009C8.61828 15.3893 8.13642 15.7819 7.1727 16.5672C5.70504 17.7631 4.97121 18.3611 4.45433 18.2201C4.26119 18.1674 4.08733 18.0601 3.95355 17.9112C3.59555 17.5126 3.80059 16.5884 4.21067 14.7402L4.28012 14.4271C4.50326 13.4214 4.61482 12.9186 4.4981 12.445C4.47633 12.3566 4.44879 12.2698 4.41566 12.1851C4.23809 11.7308 3.85709 11.3841 3.09511 10.6909L2.59273 10.2338C1.08748 8.86437 0.33485 8.17964 0.551703 7.53486C0.768556 6.89009 1.782 6.79933 3.80889 6.6178L4.03278 6.59775C5.27124 6.48684 5.89046 6.43138 6.36218 6.08066C6.8339 5.72995 7.06536 5.15293 7.52826 3.9989L7.56642 3.90378Z" />
       </svg>
       <svg
-        class="cross-err-btn"
+        class="cross-arr-btn"
         onclick="deleteTask(this, 'tasks')"
         width="800px"
         height="800px"
@@ -201,7 +201,7 @@ doneBtn.forEach(element => {
     element.addEventListener('click', doneTask)
 })
 
-crossErrBtn.forEach(element => {
+crossArrBtn.forEach(element => {
     element.addEventListener('click', deleteTask) //Нажатие на кнопку Удаление задачи
 })
 
@@ -257,7 +257,7 @@ function renderReadyTask(element) {
               <p>${element.text}</p>
               <div class="important">
                 <svg
-                  class="cross-err-btn"
+                  class="cross-arr-btn"
                   onclick="deleteTask(this, 'doneTasks')"
                   width="800px"
                   height="800px"
@@ -274,7 +274,7 @@ function renderReadyTask(element) {
 }
 
 // Перебор боковых вкладок и выбор той по котрой нажали
-drawerItems.forEach(item => {
+listItems.forEach(item => {
     item.addEventListener('click', () => {
         currentTab = item.dataset.type
         currentTabData = data[currentTab]
@@ -285,5 +285,5 @@ drawerItems.forEach(item => {
 
 // Нажатие на кнопку "Меню"
 menuBtn.addEventListener('click', () => {
-    document.querySelector('.todo__drawer').classList.toggle('active')
+    document.querySelector('.side-menu__list').classList.toggle('active') 
 })
